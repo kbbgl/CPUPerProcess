@@ -39,7 +39,7 @@ Do {
         add-member noteproperty ProcessPath $NamedProcess.commandline -PassThru
 }
 
-$output |  Out-String -Width 4096 | Out-File $logpath -Append
+$output | Format-Table -Wrap -AutoSize | Out-String -Width 4096 | Out-File $logpath -Append
 "---------------" | Add-Content $logpath
 
 }
