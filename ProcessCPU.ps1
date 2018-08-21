@@ -25,7 +25,7 @@ Do {
         $proc = (Get-Process -Id $NamedProcess.ProcessId -ErrorAction SilentlyContinue).Name 
 
         # Get counter for CPU
-        $Samples = (Get-Counter -Counter "\Process($proc*)\% Processor Time" -ErrorAction SilentlyContinue | where {$_.InstanceName -notin "_Total", "idle"} | sort CookedValue -Descending).CounterSamples
+        $Samples = (Get-Counter -Counter "\Process($proc*)\% Processor Time" -ErrorAction SilentlyContinue).CounterSamples | where {$_.InstanceName -notin "_total", "idle"} | sort CookedValue -Descending
 
         # Filter processes where CPU > $cpuThreshold
         $Samples | Select `
